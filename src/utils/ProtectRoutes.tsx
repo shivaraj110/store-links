@@ -1,15 +1,44 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-const ProtectRoutes = () => {
-  const [loggedUser,setLoggedUser] = useState();
-  useEffect(()=>{
-    axios.get("http://localhost:5000/api/v1/personal/profile",{
-      headers:{
-        Authorization:"Bearer " + localStorage.getItem("token")
+import axios from "axios";
+import { backendUrl } from "../config/url";
+
+const ProtectedRoutes = () => {
+  const [loggedUser, setLoggedUser] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          setLoggedUser("");
+          setIsLoading(false);
+          return;
+        }
+
+        const response = await axios.get(
+          backendUrl + "/api/v1/personal/profile",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
+        const email = response.data.user.email || "";
+        setLoggedUser(email);
+      } catch (error) {
+        setLoggedUser("");
+      } finally {
+        setIsLoading(false);
       }
-    }).then(res => setLoggedUser(res.data.email))
-  })
-  return loggedUser ? <Outlet /> : <Navigate to={"/login"} />;
+    };
+
+    checkAuth();
+  }, []);
+
+  if (isLoading) return null;
+
+  return loggedUser ? <Outlet /> : <Navigate to="/login" />;
 };
-export default ProtectRoutes;
+
+export default ProtectedRoutes;

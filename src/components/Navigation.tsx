@@ -4,7 +4,7 @@ import { clsx } from "clsx";
 
 export function Navigation() {
   return (
-    <nav className="bg-white border-b border-slate-200 px-2">
+    <nav className=" px-2">
       <div className="flex h-14">
         <NavLink
           to="/personal"
