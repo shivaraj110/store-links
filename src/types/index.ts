@@ -5,16 +5,12 @@ export type User = {
 };
 
 export type Link = {
-  id: string;
-  title: string;
-  url: string;
-  description: string;
-  category?: LinkCategory;
-  isPublic: boolean;
-  userId: string;
-  createdAt: string;
-  views: number;
-  user: User;
+id: number;
+    userId: number;
+    link: string;
+    title: string;
+    desc: string;
+    postedOn: Date;
 };
 
 export type LinkCategory = 'scholarships' | 'study_materials' | 'hackathons' | 'software' | 'jobs';

@@ -4,34 +4,18 @@ import { SearchBar } from "../components/SearchBar";
 import { Button } from "../components/ui/Button";
 import { Link } from "../types";
 import { Navigation } from "../components/Navigation";
-
-const mockLinks: Link[] = [
-  {
-    id: "1",
-    title: "Example Personal Link",
-    url: "https://example.com",
-    description: "This is a personal link example",
-    isPublic: false,
-    userId: "1",
-    createdAt: new Date().toISOString(),
-    views: 0,
-    user: {
-      id: "1",
-      username: "johndoe",
-      avatarUrl:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=faces",
-    },
-  },
-];
+import { useLinks } from "../hooks/usePersonalLinks";
+import { Link as Linkk } from "react-router-dom";
+import LinkCardSkeleton from "../components/LinkSkeleton";
 
 export default function PersonalLinks() {
   const [search, setSearch] = useState("");
-  const [links] = useState<Link[]>(mockLinks);
+  const { loading, links } = useLinks();
 
   const filteredLinks = links.filter(
-    (link) =>
+    (link: Link) =>
       link.title.toLowerCase().includes(search.toLowerCase()) ||
-      link.description.toLowerCase().includes(search.toLowerCase())
+      link.desc.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -39,20 +23,26 @@ export default function PersonalLinks() {
       <Navigation />
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold text-gray-900">Personal Links</h1>
-        <Button size="sm">Add Link</Button>
+        <Linkk to={"/addPersonalLink"}>
+          <Button size="sm">Add Link</Button>
+        </Linkk>
       </div>
 
       <SearchBar value={search} onChange={setSearch} />
 
       <div className="space-y-3 mt-4">
-        {filteredLinks.map((link) => (
-          <LinkCard
-            key={link.id}
-            link={link}
-            onEdit={() => {}}
-            onDelete={() => {}}
-          />
-        ))}
+        {loading ? (
+          <LinkCardSkeleton />
+        ) : (
+          filteredLinks.map((link: Link) => (
+            <LinkCard
+              key={link.id}
+              link={link}
+              onEdit={() => {}}
+              onDelete={() => {}}
+            />
+          ))
+        )}
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { Camera } from "lucide-react";
 import { Button } from "./ui/Button";
+import { formatDistanceToNow } from "date-fns";
 
 type ProfileHeaderProps = {
   username: string;
@@ -34,7 +35,7 @@ export function ProfileHeader({
       <div>
         <h2 className="text-2xl font-bold text-slate-900">{username}</h2>
         <p className="text-sm text-slate-500 mt-1">
-          Member since {joinedOn.slice(0, 10)}
+          Member since {formatDistanceToNow(new Date(joinedOn))}
         </p>
       </div>
     </div>

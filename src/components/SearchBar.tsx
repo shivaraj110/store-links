@@ -1,6 +1,5 @@
-import { Search } from 'lucide-react';
-import React from 'react';
-import { Input } from './ui/Input';
+import { Search } from "lucide-react";
+import { Input } from "./ui/Input";
 
 type SearchBarProps = {
   value: string;

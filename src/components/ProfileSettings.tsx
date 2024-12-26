@@ -1,11 +1,14 @@
 import React from "react";
 import { Input } from "./ui/Input";
 import { Button, DeleteButton } from "./ui/Button";
+import axios from "axios";
+import { backendUrl } from "../config/url";
+import { toast } from "react-toastify";
 
 type ProfileSettingsProps = {
   username: string;
   email: string;
-  onSave: (data: { username: string; email: string }) => void;
+  onSave: (data: { username: string; email: string }) => Promise<void>;
 };
 
 export function ProfileSettings({
@@ -15,9 +18,9 @@ export function ProfileSettings({
 }: ProfileSettingsProps) {
   const [form, setForm] = React.useState({ username, email });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSave(form);
+    await onSave(form);
   };
 
   return (
@@ -55,10 +58,41 @@ export function ProfileSettings({
       </div>
       <Button type="submit" className="w-full">
         Save Changes
-      </Button>{" "}
-      <DeleteButton type="submit" className="w-full">
-        Delete Account
-      </DeleteButton>
+      </Button>
+      <DeleteButton className="w-full">Delete Account</DeleteButton>
     </form>
   );
 }
+
+// Handle save settings function
+export const handleSaveSettings = async (data: {
+  username: string;
+  email: string;
+}) => {
+  try {
+    const [firstName, lastName] = data.username.split(" ");
+
+    const response = await axios.put(
+      `${backendUrl}/api/v1/profile/edit`,
+      {
+        email: data.email,
+        fname: firstName,
+        lname: lastName || "",
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+
+    toast(response.data.msg, {
+      type: response.status === 200 ? "success" : "error",
+    });
+
+    return response;
+  } catch (error) {
+    toast.error("Failed to update profile");
+    throw error;
+  }
+};

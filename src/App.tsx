@@ -4,6 +4,7 @@ import PublicLinks from "./pages/PublicLinks";
 import Profile from "./pages/Profile";
 import AuthForm from "./components/ui/AuthComponent";
 import ProtectRoutes from "./utils/ProtectRoutes";
+import AddLinkForm from "./pages/addPersonalLink";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
             <Route path="/login" element={<AuthForm />} />
             <Route element={<ProtectRoutes />}>
               <Route path="/personal" element={<PersonalLinks />} />
+              <Route path="addPersonalLink" element={<AddLinkForm />} />
               <Route path="/" element={<PublicLinks />} />
               <Route path="/profile" element={<Profile />} />
             </Route>
