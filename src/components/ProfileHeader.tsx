@@ -1,14 +1,19 @@
-import React from 'react';
-import { Camera } from 'lucide-react';
-import { Button } from './ui/Button';
+import { Camera } from "lucide-react";
+import { Button } from "./ui/Button";
 
 type ProfileHeaderProps = {
   username: string;
   avatarUrl: string;
+  joinedOn: string;
   onAvatarChange: () => void;
 };
 
-export function ProfileHeader({ username, avatarUrl, onAvatarChange }: ProfileHeaderProps) {
+export function ProfileHeader({
+  username,
+  avatarUrl,
+  onAvatarChange,
+  joinedOn,
+}: ProfileHeaderProps) {
   return (
     <div className="flex items-center gap-6">
       <div className="relative group">
@@ -28,7 +33,9 @@ export function ProfileHeader({ username, avatarUrl, onAvatarChange }: ProfileHe
       </div>
       <div>
         <h2 className="text-2xl font-bold text-slate-900">{username}</h2>
-        <p className="text-sm text-slate-500 mt-1">Member since Jan 2024</p>
+        <p className="text-sm text-slate-500 mt-1">
+          Member since {joinedOn.slice(0, 10)}
+        </p>
       </div>
     </div>
   );

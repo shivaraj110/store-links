@@ -20,6 +20,6 @@ const [details,setDetails] = useState<userDetails>()
             setDetails(res.data.user)
             setLoading(false)
         })
-    })
+    },[])
     return {loading,details}
 }

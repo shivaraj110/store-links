@@ -15,15 +15,34 @@ const AuthForm = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    fname: "",
+    lname: "",
   });
+
+  const resendOtp = async () => {
+    const res = await axios.post(
+      `${backendUrl}/api/v1/user/${isLogin ? "signin" : "signup"}/resendotp`,
+      {
+        email: formData.email,
+      }
+    );
+    res.status == 200
+      ? toast.success(res.data.msg)
+      : toast.error("something wrong with sending a new otp");
+  };
 
   const handleOtpVerification = async (otp: string) => {
     await axios
-      .post(backendUrl + "/api/v1/user/signin/verify", {
-        email: formData.email,
-        password: formData.password,
-        otp: Number(otp),
-      })
+      .post(
+        `${backendUrl}/api/v1/user/${isLogin ? "signin" : "signup"}/verify`,
+        {
+          email: formData.email,
+          password: formData.password,
+          otp: Number(otp),
+          fname: formData.fname,
+          lname: formData.lname,
+        }
+      )
       .then((res) => {
         if (res.data.token) {
           toast.success(res.data.msg);
@@ -38,10 +57,15 @@ const AuthForm = () => {
     e.preventDefault();
     setLoading(true);
     // Simulate API call
-    const res = await axios.post("http://localhost:5000/api/v1/user/signin", {
-      email: formData.email,
-      password: formData.password,
-    });
+    const res = await axios.post(
+      `${backendUrl}/api/v1/user/${isLogin ? "signin" : "signup"}`,
+      {
+        email: formData.email,
+        password: formData.password,
+        fname: formData.fname,
+        lname: formData.lname,
+      }
+    );
     res.status !== 200
       ? toast.error(res.data.msg)
       : toast.success(res.data.msg);
@@ -54,6 +78,7 @@ const AuthForm = () => {
           <ToastContainer />
 
           <OTPVerification
+            onResend={resendOtp}
             email={formData.email}
             onVerify={handleOtpVerification}
           />
@@ -77,6 +102,46 @@ const AuthForm = () => {
                 required
               />
             </div>
+
+            {!isLogin && (
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  value={formData.fname}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      fname: e.target.value,
+                    })
+                  }
+                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+            )}
+
+            {!isLogin && (
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  value={formData.lname}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      lname: e.target.value,
+                    })
+                  }
+                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+            )}
 
             <div className="relative">
               <label className="block text-sm font-medium mb-1">Password</label>

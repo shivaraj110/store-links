@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { CategoryFilter } from "../components/CategoryFilter";
 import { LinkCard } from "../components/LinkCard";
 import { SearchBar } from "../components/SearchBar";
 import { Link, LinkCategory } from "../types";
 import { Navigation } from "../components/Navigation";
+import { ToastContainer } from "react-toastify";
+import { Button } from "../components/ui/Button";
 
 const mockLinks: Link[] = [
   {
@@ -39,9 +41,14 @@ export default function PublicLinks() {
 
   return (
     <div className="space-y-6">
+      <ToastContainer />
       <Navigation />
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Public Links</h1>
+        <div className="flex justify-between">
+          <h1 className="text-2xl font-bold text-gray-900">Public Links</h1>
+          <Button size="sm">Add Link</Button>
+        </div>
+
         <p className="mt-1 text-gray-600">
           Discover and share useful resources with the community
         </p>
