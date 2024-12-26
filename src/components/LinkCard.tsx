@@ -1,18 +1,39 @@
 import { formatDistanceToNow } from "date-fns";
-import { Link as LinkIcon } from "lucide-react";
+import { Link as LinkIcon, User } from "lucide-react";
 import { Link } from "../types";
 import { useProfile } from "../hooks/useProfile";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import axios from "axios";
+import { backendUrl } from "../config/url";
 
 type LinkCardProps = {
   link: Link;
-  onEdit?: () => void;
-  onDelete?: () => void;
 };
 
-export function LinkCard({ link, onEdit, onDelete }: LinkCardProps) {
+const onDelete = (id: number) => {
+  axios
+    .delete(backendUrl + "/api/v1/personal/link", {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      data: {
+        id,
+      },
+    })
+    .then((res) => {
+      toast.success(res.data.msg);
+      window.location.reload();
+    });
+};
+
+export function LinkCard({ link }: LinkCardProps) {
+  const nav = useNavigate();
   const { details } = useProfile();
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+    <div className="rounded-lg border border-blue-600 bg-gray-700/10  backdrop-blur-sm p-4 shadow-sm">
+      <ToastContainer />
+
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <h3 className="font-medium text-gray-900">{link.title}</h3>
@@ -20,43 +41,39 @@ export function LinkCard({ link, onEdit, onDelete }: LinkCardProps) {
             href={link.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-1 flex items-center text-sm text-blue-600 hover:underline"
+            className="mt-1 flex items-center text-sm text-blue-700 hover:underline"
           >
             <LinkIcon className="mr-1 h-4 w-4" />
             Visit Link
           </a>
         </div>
-        {(onEdit || onDelete) && (
-          <div className="flex space-x-2">
-            {onEdit && (
-              <button
-                onClick={onEdit}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                Edit
-              </button>
-            )}
-            {onDelete && (
-              <button
-                onClick={onDelete}
-                className="text-red-500 hover:text-red-700"
-              >
-                Delete
-              </button>
-            )}
-          </div>
-        )}
+
+        <div className="flex space-x-2">
+          <button
+            onClick={() => {
+              nav(
+                `/edit-personal?id=${link.id}&title=${link.title}&desc=${link.desc}&link=${link.link}`
+              );
+            }}
+            className="text-blue-700 hover:text-blue-900"
+          >
+            Edit
+          </button>
+
+          <button
+            onClick={() => {
+              onDelete(link.id);
+            }}
+            className="text-red-700 hover:text-red-900"
+          >
+            Delete
+          </button>
+        </div>
       </div>
-      <p className="mt-2 text-sm text-gray-600">{link.desc}</p>
-      <div className="mt-4 flex items-center justify-between text-sm text-gray-500">
-        <div className="flex items-center">
-          <img
-            src={
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcazeHuAcZDzv4_61fPLT-S00XnaKXch2YWQ&s"
-            }
-            alt={"user profile"}
-            className="mr-2 h-6 w-6 object-scale-down rounded-full"
-          />
+      <p className="mt-2 text-sm text-gray-900">{link.desc}</p>
+      <div className="mt-4 flex items-center justify-between text-sm text-gray-800">
+        <div className="flex space-x-2  items-center">
+          <User className="size-6" />
           <span>{details?.fname}</span>
         </div>
         <div className="flex items-center space-x-4">

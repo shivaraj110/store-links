@@ -30,17 +30,20 @@ export default function PersonalLinks() {
 
       <SearchBar value={search} onChange={setSearch} />
 
-      <div className="space-y-3 mt-4">
+      <div className="space-y-3 ">
         {loading ? (
-          <LinkCardSkeleton />
+          <div>
+            <LinkCardSkeleton />
+            <br />
+            <LinkCardSkeleton />
+            <br />
+            <LinkCardSkeleton />
+            <br />
+            <LinkCardSkeleton />
+          </div>
         ) : (
           filteredLinks.map((link: Link) => (
-            <LinkCard
-              key={link.id}
-              link={link}
-              onEdit={() => {}}
-              onDelete={() => {}}
-            />
+            <LinkCard key={link.id} link={link} />
           ))
         )}
       </div>
