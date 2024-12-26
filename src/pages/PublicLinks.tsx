@@ -32,7 +32,15 @@ export default function PersonalLinks() {
 
       <div className="space-y-3 mt-4">
         {loading ? (
-          <LinkCardSkeleton />
+          <div>
+            <LinkCardSkeleton />
+            <br />
+            <LinkCardSkeleton />
+            <br />
+            <LinkCardSkeleton />
+            <br />
+            <LinkCardSkeleton />
+          </div>
         ) : (
           filteredLinks.map((link: Link) => (
             <LinkCard

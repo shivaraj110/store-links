@@ -1,98 +1,39 @@
-export default function () {
+const ProfileSkeleton = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
-      <defs>
-        <linearGradient id="shimmer" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0%" stop-color="#e0e0e0">
-            <animate
-              attributeName="offset"
-              values="-1; 2"
-              dur="2s"
-              repeatCount="indefinite"
-            />
-          </stop>
-          <stop offset="50%" stop-color="#f5f5f5">
-            <animate
-              attributeName="offset"
-              values="-0.5; 2.5"
-              dur="2s"
-              repeatCount="indefinite"
-            />
-          </stop>
-          <stop offset="100%" stop-color="#e0e0e0">
-            <animate
-              attributeName="offset"
-              values="0; 3"
-              dur="2s"
-              repeatCount="indefinite"
-            />
-          </stop>
-        </linearGradient>
-      </defs>
+    <div className="max-w-2xl p-4 space-y-4 ">
+      <div className="flex justify-between mb-8">
+        <div className="space-x-4">
+          <div className="h-6 w-24 bg-gray-400 rounded animate-pulse inline-block" />
+          <div className="h-6 w-24 bg-gray-400 rounded animate-pulse inline-block" />
+        </div>
+        <div className="h-6 w-16 bg-gray-400 rounded animate-pulse" />
+      </div>
 
-      <rect width="400" height="500" fill="#f0f2f5" />
+      <div className="flex items-center bg-gray-700/40 rounded-lg space-x-4 p-10 mb-8">
+        <div className="w-16 h-16 bg-gray-400 rounded-full animate-pulse" />
+        <div>
+          <div className="h-5 w-40 bg-gray-400 rounded animate-pulse mb-2" />
 
-      <circle cx="80" cy="80" r="40" fill="url(#shimmer)" />
+          <div className="h-4 w-24 bg-gray-400 rounded animate-pulse" />
+        </div>
+      </div>
 
-      <rect
-        x="130"
-        y="70"
-        width="150"
-        height="20"
-        rx="4"
-        fill="url(#shimmer)"
-      />
+      <div className="p-10 bg-gray-200 rounded-lg bg-gray-700/40  space-y-6">
+        <div className="space-y-2">
+          <div className="h-4 w-20 bg-gray-400 rounded animate-pulse" />
+          <div className="h-10 w-full bg-gray-400 rounded animate-pulse" />
+        </div>
 
-      <rect
-        x="130"
-        y="95"
-        width="120"
-        height="16"
-        rx="4"
-        fill="url(#shimmer)"
-      />
+        <div className="space-y-2">
+          <div className="h-4 w-12 bg-gray-400 rounded animate-pulse" />
+          <div className="h-10 w-full bg-gray-400 rounded animate-pulse" />
+        </div>
 
-      <rect x="40" y="160" width="320" height="300" rx="8" fill="white" />
-
-      <rect
-        x="60"
-        y="180"
-        width="150"
-        height="24"
-        rx="4"
-        fill="url(#shimmer)"
-      />
-
-      <rect x="60" y="230" width="80" height="16" rx="4" fill="url(#shimmer)" />
-
-      <rect
-        x="60"
-        y="255"
-        width="280"
-        height="40"
-        rx="4"
-        fill="url(#shimmer)"
-      />
-
-      <rect x="60" y="315" width="60" height="16" rx="4" fill="url(#shimmer)" />
-
-      <rect
-        x="60"
-        y="340"
-        width="280"
-        height="40"
-        rx="4"
-        fill="url(#shimmer)"
-      />
-
-      <rect
-        x="60"
-        y="400"
-        width="280"
-        height="40"
-        rx="4"
-        fill="url(#shimmer)"
-      />
-    </svg>
+        <div className="h-10 w-full bg-blue-300 rounded animate-pulse" />
+        <div className="h-10 w-full bg-red-300 rounded animate-pulse" />
+      </div>
+    </div>
   );
-}
+};
+
+export default ProfileSkeleton;

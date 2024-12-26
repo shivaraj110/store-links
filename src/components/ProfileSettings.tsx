@@ -28,7 +28,7 @@ export function ProfileSettings({
       <div>
         <label
           htmlFor="username"
-          className="block text-sm font-medium text-slate-700 mb-1.5"
+          className="block text-md font-medium text-gray-900 mb-1.5"
         >
           Username
         </label>
@@ -43,7 +43,7 @@ export function ProfileSettings({
       <div>
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-slate-700 mb-1.5"
+          className="block text-md font-medium text-gray-900 mb-1.5"
         >
           Email
         </label>

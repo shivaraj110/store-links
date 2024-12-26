@@ -1,28 +1,22 @@
-import { Camera } from "lucide-react";
+import { Camera, LogOut, UserCircle2 } from "lucide-react";
 import { Button } from "./ui/Button";
 import { formatDistanceToNow } from "date-fns";
 
 type ProfileHeaderProps = {
   username: string;
-  avatarUrl: string;
   joinedOn: string;
   onAvatarChange: () => void;
 };
 
 export function ProfileHeader({
   username,
-  avatarUrl,
   onAvatarChange,
   joinedOn,
 }: ProfileHeaderProps) {
   return (
-    <div className="flex items-center gap-6">
+    <div className="flex justify-between items-center bg-gray-700/40 p-10 rounded-lg gap-6">
       <div className="relative group">
-        <img
-          src={avatarUrl}
-          alt={username}
-          className="w-24 h-24 rounded-full object-cover ring-4 ring-white shadow-md"
-        />
+        <UserCircle2 className="size-24" />
         <Button
           variant="secondary"
           size="sm"
@@ -32,11 +26,14 @@ export function ProfileHeader({
           <Camera className="w-4 h-4" />
         </Button>
       </div>
-      <div>
-        <h2 className="text-2xl font-bold text-slate-900">{username}</h2>
-        <p className="text-sm text-slate-500 mt-1">
+      <div className="text-gray-900">
+        <h2 className="text-2xl font-bold ">{username}</h2>
+        <p className="text-sm  mt-1">
           Member since {formatDistanceToNow(new Date(joinedOn))}
         </p>
+      </div>
+      <div>
+        <LogOut className="text-red-700 size-10 cursor-pointer hover:text-red-900 delay-75 transi" />
       </div>
     </div>
   );

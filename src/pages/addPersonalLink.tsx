@@ -39,54 +39,56 @@ export default function AddLinkForm({ onSuccess, onCancel }: AddLinkFormProps) {
   return (
     <div>
       <Navigation />
-      <form onSubmit={handleSubmit} className="space-y-4 my-44">
-        <div>
-          <label className=" block text-sm font-medium text-gray-700 mb-1">
-            Title
-          </label>
-          <Input
-            required
-            value={form.title}
-            onChange={(e: any) =>
-              setForm((prev) => ({ ...prev, title: e.target.value }))
-            }
-          />
-        </div>
+      <div className="bg-gray-700/40 backdrop-blur-sm p-10 my-36 rounded-xl ">
+        <form onSubmit={handleSubmit} className="space-y-4 ">
+          <div>
+            <label className=" block text-lg font-medium text-gray-800 mb-1">
+              Title
+            </label>
+            <Input
+              required
+              value={form.title}
+              onChange={(e: any) =>
+                setForm((prev) => ({ ...prev, title: e.target.value }))
+              }
+            />
+          </div>
 
-        <div>
-          <label className=" block text-sm font-medium text-gray-700 mb-1">
-            Description
-          </label>
-          <Input
-            required
-            value={form.description}
-            onChange={(e: any) =>
-              setForm((prev) => ({ ...prev, description: e.target.value }))
-            }
-          />
-        </div>
+          <div>
+            <label className=" block text-lg font-medium text-gray-800 mb-1">
+              Description
+            </label>
+            <Input
+              required
+              value={form.description}
+              onChange={(e: any) =>
+                setForm((prev) => ({ ...prev, description: e.target.value }))
+              }
+            />
+          </div>
 
-        <div>
-          <label className=" block text-sm font-medium text-gray-700 mb-1">
-            Link URL
-          </label>
-          <Input
-            required
-            type="url"
-            value={form.link}
-            onChange={(e: any) =>
-              setForm((prev) => ({ ...prev, link: e.target.value }))
-            }
-          />
-        </div>
+          <div>
+            <label className=" block text-lg font-medium text-gray-800 mb-1">
+              Link URL
+            </label>
+            <Input
+              required
+              type="url"
+              value={form.link}
+              onChange={(e: any) =>
+                setForm((prev) => ({ ...prev, link: e.target.value }))
+              }
+            />
+          </div>
 
-        <div className="flex justify-end gap-3">
-          <Button type="button" variant="outline" onClick={onCancel}>
-            Cancel
-          </Button>
-          <Button type="submit">Add Link</Button>
-        </div>
-      </form>
+          <div className="flex justify-end gap-3">
+            <Button type="button" variant="outline" onClick={onCancel}>
+              Cancel
+            </Button>
+            <Button type="submit">Add Link</Button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

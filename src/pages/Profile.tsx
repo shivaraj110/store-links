@@ -26,13 +26,10 @@ export default function Profile() {
       <ProfileHeader
         joinedOn={details?.joinedOn ?? ""}
         username={details?.fname + " " + details?.lname}
-        avatarUrl={
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcazeHuAcZDzv4_61fPLT-S00XnaKXch2YWQ&s"
-        }
         onAvatarChange={handleAvatarChange}
       />
 
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+      <div className="bg-gray-700/30 backdrop-blur-sm rounded-xl shadow-sm border border-slate-300 p-6">
         <h3 className="text-lg font-semibold text-slate-900 mb-6">
           Profile Settings
         </h3>

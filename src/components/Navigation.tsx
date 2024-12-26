@@ -31,10 +31,10 @@ export function Navigation() {
           to="/personal"
           className={({ isActive }) =>
             clsx(
-              "flex items-center gap-2 px-4 text-sm font-medium relative",
+              "flex items-center  gap-2 px-4 text-md font-medium relative",
               "after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:transition-all",
               isActive
-                ? "text-blue-600 after:bg-blue-600"
+                ? "text-gray-900 rounded-lg bg-gray-700/50"
                 : "text-slate-600 hover:text-slate-900 after:bg-transparent hover:after:bg-slate-200"
             )
           }
@@ -46,11 +46,11 @@ export function Navigation() {
           to="/"
           className={({ isActive }) =>
             clsx(
-              "flex items-center gap-2 px-4 text-sm font-medium relative",
+              "flex items-center gap-2 px-4 text-lg font-medium relative",
               "after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:transition-all",
               isActive
-                ? "text-blue-600 after:bg-blue-600"
-                : "text-slate-600 hover:text-slate-900 after:bg-transparent hover:after:bg-slate-200"
+                ? "text-gray-900 rounded-lg bg-gray-700/50"
+                : "text-slate-600 after:bg-transparent hover:after:bg-slate-200"
             )
           }
         >
@@ -60,7 +60,7 @@ export function Navigation() {
 
         <div
           className={clsx(
-            "flex items-center gap-2 px-4 text-sm font-medium relative ml-auto",
+            "flex items-center gap-2 px-4 text-lg font-medium relative ml-auto",
             "after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:transition-all"
           )}
         >
@@ -72,10 +72,10 @@ export function Navigation() {
             to="/profile"
             className={({ isActive }) =>
               clsx(
-                "flex items-center gap-2 px-4 text-sm font-medium relative ml-auto",
-                "after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:transition-all",
+                "flex items-center gap-2 px-4 text-lg font-medium relative p-5 ml-auto",
+
                 isActive
-                  ? "text-blue-600 after:bg-blue-600"
+                  ? "text-gray-900 rounded-lg bg-gray-700/50"
                   : "text-slate-600 hover:text-slate-900 after:bg-transparent hover:after:bg-slate-200"
               )
             }
