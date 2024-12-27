@@ -72,7 +72,7 @@ export function Navigation() {
             to="/profile"
             className={({ isActive }) =>
               clsx(
-                "flex items-center gap-2 px-4 text-lg font-medium relative p-5 ml-auto",
+                "flex items-center gap-2 px-4 text-lg font-medium relative p-3 ml-auto",
 
                 isActive
                   ? "text-gray-900 rounded-lg bg-gray-700/50"

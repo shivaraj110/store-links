@@ -82,7 +82,13 @@ export default function AddLinkForm({ onSuccess, onCancel }: AddLinkFormProps) {
           </div>
 
           <div className="flex justify-end gap-3">
-            <Button type="button" variant="outline" onClick={onCancel}>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => {
+                nav("/personal");
+              }}
+            >
               Cancel
             </Button>
             <Button type="submit">Add Link</Button>

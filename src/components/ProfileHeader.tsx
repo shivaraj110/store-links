@@ -1,6 +1,10 @@
 import { Camera, LogOut, UserCircle2 } from "lucide-react";
 import { Button } from "./ui/Button";
 import { formatDistanceToNow } from "date-fns";
+import { backendUrl } from "../config/url";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 type ProfileHeaderProps = {
   username: string;
@@ -13,6 +17,23 @@ export function ProfileHeader({
   onAvatarChange,
   joinedOn,
 }: ProfileHeaderProps) {
+  const nav = useNavigate();
+  const onLogout = async () => {
+    const res = await axios.put(
+      backendUrl + "/api/v1/user/logout",
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      }
+    );
+    res.status == 200
+      ? toast.success("logged out!")
+      : toast.error("couldn't logout!");
+    nav("/login");
+  };
+
   return (
     <div className="flex justify-between items-center bg-gray-700/40 p-10 rounded-lg gap-6">
       <div className="relative group">
@@ -33,7 +54,10 @@ export function ProfileHeader({
         </p>
       </div>
       <div>
-        <LogOut className="text-red-700 size-10 cursor-pointer hover:text-red-900 delay-75 transi" />
+        <LogOut
+          onClick={onLogout}
+          className="text-red-700 size-10 cursor-pointer hover:text-red-900 delay-75 transi"
+        />
       </div>
     </div>
   );

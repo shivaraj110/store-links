@@ -7,6 +7,7 @@ import { Navigation } from "../components/Navigation";
 import { useLinks } from "../hooks/usePersonalLinks";
 import { Link as Linkk } from "react-router-dom";
 import LinkCardSkeleton from "../components/LinkSkeleton";
+import NoLinksYet from "../components/Nolinks";
 
 export default function PersonalLinks() {
   const [search, setSearch] = useState("");
@@ -41,10 +42,12 @@ export default function PersonalLinks() {
             <br />
             <LinkCardSkeleton />
           </div>
-        ) : (
+        ) : filteredLinks[0] ? (
           filteredLinks.map((link: Link) => (
             <LinkCard key={link.id} link={link} />
           ))
+        ) : (
+          <NoLinksYet />
         )}
       </div>
     </div>
