@@ -4,10 +4,9 @@ import axios from "axios";
 import OTPVerification from "../OTP";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { backendUrl } from "../../config/url";
 const AuthForm = () => {
-  const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const nav = useNavigate();
@@ -20,12 +19,9 @@ const AuthForm = () => {
   });
 
   const resendOtp = async () => {
-    const res = await axios.post(
-      `${backendUrl}/api/v1/user/${isLogin ? "signin" : "signup"}/resendotp`,
-      {
-        email: formData.email,
-      }
-    );
+    const res = await axios.post(`${backendUrl}/api/v1/user/signin/resendotp`, {
+      email: formData.email,
+    });
     res.status == 200
       ? toast.success(res.data.msg)
       : toast.error("something wrong with sending a new otp");
@@ -33,21 +29,15 @@ const AuthForm = () => {
 
   const handleOtpVerification = async (otp: string) => {
     await axios
-      .post(
-        `${backendUrl}/api/v1/user/${isLogin ? "signin" : "signup"}/verify`,
-        {
-          email: formData.email,
-          password: formData.password,
-          otp: Number(otp),
-          fname: formData.fname,
-          lname: formData.lname,
-        }
-      )
+      .post(`${backendUrl}/api/v1/user/signin/resetpassword`, {
+        email: formData.email,
+        password: formData.confirmPassword,
+        otp: Number(otp),
+      })
       .then((res) => {
-        if (res.data.token) {
+        if (res.status == 200) {
           toast.success(res.data.msg);
-          localStorage.setItem("token", res.data.token);
-          nav("/");
+          nav("/login");
         }
       })
       .catch((err) => toast.error(err));
@@ -58,12 +48,9 @@ const AuthForm = () => {
     setLoading(true);
     // Simulate API call
     const res = await axios.post(
-      `${backendUrl}/api/v1/user/${isLogin ? "signin" : "signup"}`,
+      `${backendUrl}/api/v1/user/signin/forgotpassword`,
       {
         email: formData.email,
-        password: formData.password,
-        fname: formData.fname,
-        lname: formData.lname,
       }
     );
     res.status !== 200
@@ -73,10 +60,9 @@ const AuthForm = () => {
 
   return (
     <div>
+      <ToastContainer />
       {loading ? (
         <div>
-          <ToastContainer />
-
           <OTPVerification
             onResend={resendOtp}
             email={formData.email}
@@ -86,7 +72,7 @@ const AuthForm = () => {
       ) : (
         <div className="w-80 p-4 mx-auto my-52 bg-white rounded-lg shadow">
           <h2 className="text-2xl font-bold mb-4 text-center">
-            {isLogin ? "Login" : "Sign Up"}
+            {"Reset Password"}
           </h2>
           <ToastContainer />
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -102,47 +88,6 @@ const AuthForm = () => {
                 required
               />
             </div>
-
-            {!isLogin && (
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  value={formData.fname}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      fname: e.target.value,
-                    })
-                  }
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                />
-              </div>
-            )}
-
-            {!isLogin && (
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  value={formData.lname}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      lname: e.target.value,
-                    })
-                  }
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                />
-              </div>
-            )}
-
             <div className="relative">
               <label className="block text-sm font-medium mb-1">Password</label>
               <div className="relative">
@@ -168,30 +113,30 @@ const AuthForm = () => {
                 </button>
               </div>
             </div>
-
-            {!isLogin && (
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Confirm Password
-                </label>
-                <input
-                  type="password"
-                  value={formData.confirmPassword}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      confirmPassword: e.target.value,
-                    })
-                  }
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                />
-              </div>
-            )}
-
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                value={formData.confirmPassword}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    confirmPassword: e.target.value,
+                  })
+                }
+                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
             <button
               type="submit"
-              disabled={loading}
+              disabled={
+                loading || formData.password !== formData.confirmPassword
+                  ? true
+                  : false
+              }
               className="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 flex items-center justify-center"
             >
               {loading ? (
@@ -201,16 +146,6 @@ const AuthForm = () => {
               )}
             </button>
           </form>
-          <button
-            onClick={() => setIsLogin(!isLogin)}
-            className="w-full mt-4 text-sm text-blue-600 hover:text-blue-700"
-          >
-            {isLogin
-              ? `Need an account? Sign up`
-              : "Already have an account? Login"}
-            <br />
-            <Link to={"/resetpaasword"}>{"forgot password"}</Link>
-          </button>
         </div>
       )}
     </div>

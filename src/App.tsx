@@ -6,6 +6,7 @@ import AuthForm from "./components/ui/AuthComponent";
 import ProtectRoutes from "./utils/ProtectRoutes";
 import AddLinkForm from "./pages/addPersonalLink";
 import EditLinkForm from "./pages/EditPersonalLink";
+import ResetPass from "./components/ui/ResetPass";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <main className="flex-1 m-5 w-[800px] h-[1000px] overflow-y-auto px-8 py-6 bg-gray-700/40 backdrop-blur-sm rounded-xl">
         <Routes>
           <Route path="/login" element={<AuthForm />} />
+          <Route path="/resetpaasword" element={<ResetPass />} />
           <Route element={<ProtectRoutes />}>
             <Route path="/personal" element={<PersonalLinks />} />
             <Route path="/edit-personal" element={<EditLinkForm />} />

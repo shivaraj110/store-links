@@ -31,7 +31,7 @@ export function Navigation() {
           to="/personal"
           className={({ isActive }) =>
             clsx(
-              "flex items-center  gap-2 px-4 text-md font-medium relative",
+              "flex items-center  gap-2 px-4 text-lg font-medium relative",
               "after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:transition-all",
               isActive
                 ? "text-gray-900 rounded-lg bg-gray-700/50"
