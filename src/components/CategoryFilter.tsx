@@ -1,6 +1,5 @@
-import { clsx } from 'clsx';
-import React from 'react';
-import { LinkCategory } from '../types';
+import { clsx } from "clsx";
+import { LinkCategory } from "../types";
 
 type CategoryFilterProps = {
   selected: LinkCategory | null;
@@ -8,11 +7,11 @@ type CategoryFilterProps = {
 };
 
 const categories: { label: string; value: LinkCategory }[] = [
-  { label: 'Scholarships', value: 'scholarships' },
-  { label: 'Study Materials', value: 'study_materials' },
-  { label: 'Hackathons', value: 'hackathons' },
-  { label: 'Software', value: 'software' },
-  { label: 'Jobs', value: 'jobs' },
+  { label: "Scholarships", value: "scholarships" },
+  { label: "Study Materials", value: "study_materials" },
+  { label: "Hackathons", value: "hackathons" },
+  { label: "Software", value: "software" },
+  { label: "Jobs", value: "jobs" },
 ];
 
 export function CategoryFilter({ selected, onChange }: CategoryFilterProps) {
@@ -21,10 +20,10 @@ export function CategoryFilter({ selected, onChange }: CategoryFilterProps) {
       <button
         onClick={() => onChange(null)}
         className={clsx(
-          'rounded-full px-4 py-2 text-sm font-medium',
+          "rounded-full px-4 py-2 text-sm font-medium",
           selected === null
-            ? 'bg-blue-600 text-white'
-            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            ? "bg-blue-600 text-white"
+            : "bg-gray-100 text-gray-700 hover:bg-gray-200"
         )}
       >
         All
@@ -34,10 +33,10 @@ export function CategoryFilter({ selected, onChange }: CategoryFilterProps) {
           key={category.value}
           onClick={() => onChange(category.value)}
           className={clsx(
-            'rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap',
+            "rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap",
             selected === category.value
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              ? "bg-blue-600 text-white"
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
           )}
         >
           {category.label}

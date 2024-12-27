@@ -43,12 +43,7 @@ export default function PersonalLinks() {
           </div>
         ) : (
           filteredLinks.map((link: Link) => (
-            <LinkCard
-              key={link.id}
-              link={link}
-              onEdit={() => {}}
-              onDelete={() => {}}
-            />
+            <LinkCard key={link.id} link={link} />
           ))
         )}
       </div>
