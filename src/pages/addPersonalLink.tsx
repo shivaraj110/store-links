@@ -12,7 +12,7 @@ interface AddLinkFormProps {
   onCancel?: () => void;
 }
 
-export default function AddLinkForm({ onSuccess, onCancel }: AddLinkFormProps) {
+export default function AddLinkForm({ onSuccess }: AddLinkFormProps) {
   const [form, setForm] = React.useState({
     title: "",
     description: "",
