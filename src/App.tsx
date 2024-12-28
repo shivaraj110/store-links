@@ -11,7 +11,7 @@ import ResetPass from "./components/ui/ResetPass";
 export default function App() {
   return (
     <Router>
-      <main className="flex-1 m-5 w-[800px] h-[1000px] overflow-y-auto px-8 py-6 bg-gray-700/40 backdrop-blur-sm rounded-xl">
+      <main className="flex-1 m-5 size-fit overflow-hidden px-8 py-6 bg-gray-700/40 backdrop-blur-sm rounded-xl">
         <Routes>
           <Route path="/login" element={<AuthForm />} />
           <Route path="/resetpaasword" element={<ResetPass />} />

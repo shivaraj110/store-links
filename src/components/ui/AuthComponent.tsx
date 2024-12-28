@@ -70,9 +70,10 @@ const AuthForm = () => {
       ? toast.error(res.data.msg)
       : toast.success(res.data.msg);
   };
-
   return (
     <div>
+          <ToastContainer />
+
       {loading ? (
         <div>
           <ToastContainer />
@@ -88,7 +89,6 @@ const AuthForm = () => {
           <h2 className="text-2xl font-bold mb-4 text-center">
             {isLogin ? "Login" : "Sign Up"}
           </h2>
-          <ToastContainer />
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-1">Email</label>
