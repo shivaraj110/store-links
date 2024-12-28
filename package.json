@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+        "watch:css": "postcss src/index.css -o src/tailwind.css -w",
+    "build:css": "postcss src/index.css -o src/tailwind.css",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
