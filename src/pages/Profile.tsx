@@ -20,7 +20,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="max-w-2xl space-y-8">
+    <div className="space-y-5">
       <ToastContainer />
       <Navigation />
       <ProfileHeader

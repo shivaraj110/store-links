@@ -85,7 +85,7 @@ const AuthForm = () => {
           />
         </div>
       ) : (
-        <div className="w-80 p-4 mx-auto my-52 bg-white rounded-lg shadow">
+        <div className="w-fit p-4 mx-auto my-20 bg-white rounded-lg shadow">
           <h2 className="text-2xl font-bold mb-4 text-center">
             {isLogin ? "Login" : "Sign Up"}
           </h2>
