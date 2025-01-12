@@ -17,9 +17,19 @@ export default function Layout({ children }: { children: ReactNode }) {
           <Link to={"/"}>
             <LogOut />
           </Link>
-          <Link to={"/profile"}>
+          <NavLink
+            to="/profile"
+            className={({ isActive }) =>
+              clsx(
+                "text-sm mx-2 hover:text-violet-800 transi delay-75 ",
+                isActive
+                  ? "text-violet-800"
+                  : "text-slate-700 after:bg-transparent hover:after:bg-slate-200"
+              )
+            }
+          >
             <UserCircle2 />
-          </Link>
+          </NavLink>
         </div>
       </div>
 

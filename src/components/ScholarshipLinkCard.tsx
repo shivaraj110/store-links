@@ -38,7 +38,6 @@ export function ScholarshipCard(link: ScholarshipsLink) {
               <LinkIcon className="mr-1 h-4 w-4" />
               Visit Link
             </a>
-            <span className="text-sm text-gray-600">Visits: {link.views}</span>
           </div>
         </div>
 
@@ -76,6 +75,7 @@ export function ScholarshipCard(link: ScholarshipsLink) {
           <span>{link.user.fname}</span>
         </div>
         <div className="flex items-center space-x-4">
+          <span className="text-sm text-gray-600">{link.views} visits</span>
           <span>{formatDistanceToNow(new Date(link.postedOn))} ago</span>
         </div>
       </div>

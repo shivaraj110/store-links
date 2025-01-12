@@ -10,6 +10,9 @@ import Scholarships from "./pages/Scholarships";
 import Dashboard from "./pages/dashboard";
 import Layout from "./components/Layout";
 import Studymaterials from "./pages/studymaterials";
+import Softwares from "./pages/softwares";
+import Jobs from "./pages/jobs";
+import Hackathons from "./pages/hackathons";
 
 export default function App() {
   return (
@@ -51,6 +54,30 @@ export default function App() {
                 element={
                   <Layout>
                     <Studymaterials />
+                  </Layout>
+                }
+              />{" "}
+              <Route
+                path={"/public/softwares"}
+                element={
+                  <Layout>
+                    <Softwares />
+                  </Layout>
+                }
+              />{" "}
+              <Route
+                path={"/public/jobs"}
+                element={
+                  <Layout>
+                    <Jobs />
+                  </Layout>
+                }
+              />
+              <Route
+                path={"/public/hackathons"}
+                element={
+                  <Layout>
+                    <Hackathons />
                   </Layout>
                 }
               />
