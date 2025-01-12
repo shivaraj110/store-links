@@ -17,6 +17,7 @@ import AddScholarShip from "./pages/addScholarship";
 import AddStudyMaterial from "./pages/addStudymaterials";
 import AddSoftware from "./pages/addSoftware";
 import AddJob from "./pages/addJob";
+import AddHackathon from "./pages/addHackathon";
 
 export default function App() {
   return (
@@ -40,6 +41,14 @@ export default function App() {
                 element={
                   <Layout>
                     <AddSoftware />
+                  </Layout>
+                }
+              />{" "}
+              <Route
+                path={"/addHackathon"}
+                element={
+                  <Layout>
+                    <AddHackathon />
                   </Layout>
                 }
               />{" "}
@@ -75,8 +84,23 @@ export default function App() {
                   </Layout>
                 }
               />
-              <Route path={"/edit-personal"} element={<EditLinkForm />} />
-              <Route path={"/addPersonalLink"} element={<AddLinkForm />} />
+              <Route
+                path={"/edit-personal"}
+                element={
+                  <Layout>
+                    {" "}
+                    <EditLinkForm />{" "}
+                  </Layout>
+                }
+              />
+              <Route
+                path={"/addPersonalLink"}
+                element={
+                  <Layout>
+                    <AddLinkForm />
+                  </Layout>
+                }
+              />
               <Route
                 path={"/public/scholarships"}
                 element={

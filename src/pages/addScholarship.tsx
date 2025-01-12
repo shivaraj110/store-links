@@ -34,9 +34,9 @@ export default function AddScholarShip({ onSuccess }: AddLinkFormProps) {
   };
   return (
     <div className=" mt-10 items-center mx-auto">
-      <form onSubmit={handleSubmit} className="flex pt-10 justify-center">
-        <div className="bg-white text-gray-700 border mt-2 p-5 shadow-xl w-[600px] rounded-lg h-fit">
-          <div className=" flex gap-2 w-fit justify-center text-blue-600 p-2 rounded-lg bg-blue-500/20 border">
+      <form onSubmit={handleSubmit} className="  flex pt-10 justify-center">
+        <div className="bg-gradient-to-r from-blue-400 to-violet-400 backdrop-blur-sm text-gray-700 border mt-2 p-5 shadow-xl w-[600px] rounded-lg h-fit">
+          <div className=" flex gap-2 w-fit justify-center  text-blue-600 p-2 rounded-lg bg-white/30 backdrop-blur-sm border">
             <Info className="size-5 " /> fill the below form to share
             scholarship details.
           </div>
@@ -46,13 +46,14 @@ export default function AddScholarShip({ onSuccess }: AddLinkFormProps) {
           </div>
           <div className="flex justify-between">
             <input
+              placeholder="SSP"
               required
               value={form.title}
               onChange={(e: any) =>
                 setForm((prev) => ({ ...prev, title: e.target.value }))
               }
               type="text"
-              className="border-2 w-[300px] mt-2 p-2 outline-none border-gray-400 pl-2 rounded-xl"
+              className="w-[300px] placeholder:text-gray-500 mt-2 p-2 outline-none bg-white/40 border backdrop-blur-sm pl-2 rounded-xl"
             />{" "}
             <input
               required
@@ -61,7 +62,8 @@ export default function AddScholarShip({ onSuccess }: AddLinkFormProps) {
                 setForm((prev) => ({ ...prev, org: e.target.value }))
               }
               type="text"
-              className="outline-none border-2 w-[200px] mt-2 p-2 border-gray-400 pl-2 rounded-xl"
+              placeholder="Karnataka State Govt"
+              className="outline-none w-[200px] placeholder:text-gray-500 mt-2 p-2 bg-white/40 border backdrop-blur-sm pl-2 rounded-xl"
             />
           </div>
           <div className="flex justify-between">
@@ -73,7 +75,7 @@ export default function AddScholarShip({ onSuccess }: AddLinkFormProps) {
                 onChange={(e: any) =>
                   setForm((prev) => ({ ...prev, description: e.target.value }))
                 }
-                className="border-2 outline-none w-[300px] h-[200px] p-2 border-gray-400 rounded-xl"
+                className="bg-white/40 border backdrop-blur-sm outline-none w-[300px] h-[200px] p-2  rounded-xl"
                 name="description"
               />
             </div>
@@ -92,7 +94,7 @@ export default function AddScholarShip({ onSuccess }: AddLinkFormProps) {
                 onChange={(e: any) =>
                   setForm((prev) => ({ ...prev, link: e.target.value }))
                 }
-                className="border-2 w-[300px] outline-none mt-2 p-2 border-gray-400 pl-2 rounded-xl"
+                className="bg-white/40 border backdrop-blur-sm w-[300px] outline-none mt-2 p-2 pl-2 rounded-xl"
               />
             </div>
             <button

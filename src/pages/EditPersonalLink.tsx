@@ -37,7 +37,7 @@ export default function EditLinkForm({ onSuccess }: AddLinkFormProps) {
       });
       toast.success("Link added updated!");
       onSuccess?.();
-      nav("/personal");
+      nav("/");
     } catch (error) {
       toast.error("Failed to add link");
     }

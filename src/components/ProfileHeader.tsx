@@ -35,9 +35,9 @@ export function ProfileHeader({
   };
 
   return (
-    <div className="flex justify-between items-center bg-gradient-to-r from-blue-200 to-violet-400 p-10 border rounded-lg gap-6">
+    <div className="flex justify-between items-center bg-gradient-to-r from-white/30 via-white/65 to-white/30 backdrop-blur-md p-6 border rounded-lg gap-6">
       <div className="relative group">
-        <UserCircle2 className="size-24" />
+        <UserCircle2 className="size-24 text-gray-700" />
         <Button
           variant="secondary"
           size="sm"
@@ -47,7 +47,7 @@ export function ProfileHeader({
           <Camera className="w-4 h-4" />
         </Button>
       </div>
-      <div className="text-gray-900">
+      <div className="text-gray-600">
         <h2 className="text-2xl font-bold ">{username}</h2>
         <p className="text-sm  mt-1">
           Member since {formatDistanceToNow(new Date(joinedOn))}

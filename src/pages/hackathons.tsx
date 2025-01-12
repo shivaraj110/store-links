@@ -20,7 +20,7 @@ export default function Hackathons() {
     <div className="space-y-4 mt-10">
       <div className="flex items-center justify-between">
         <SearchBar value={search} onChange={setSearch} />
-        <Link to={"/addScholarShip"}>
+        <Link to={"/addHackathon"}>
           <Button size="sm" className=" ">
             <PlusCircle />
           </Button>{" "}

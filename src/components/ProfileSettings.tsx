@@ -24,11 +24,11 @@ export function ProfileSettings({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6 ">
       <div>
         <label
           htmlFor="username"
-          className="block text-md font-medium text-gray-900 mb-1.5"
+          className="block text-md font-medium text-gray-600 mb-1.5"
         >
           Username
         </label>
@@ -43,7 +43,7 @@ export function ProfileSettings({
       <div>
         <label
           htmlFor="email"
-          className="block text-md font-medium text-gray-900 mb-1.5"
+          className="block text-md font-medium text-gray-600 mb-1.5"
         >
           Email
         </label>

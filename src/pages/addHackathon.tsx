@@ -1,4 +1,4 @@
-import { Info, KanbanSquareIcon } from "lucide-react";
+import { Info, Trophy } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { backendUrl } from "../config/url";
@@ -8,13 +8,13 @@ interface AddLinkFormProps {
   onSuccess?: () => void;
   onCancel?: () => void;
 }
-export default function AddJob({ onSuccess }: AddLinkFormProps) {
+export default function AddHackathon({ onSuccess }: AddLinkFormProps) {
   const [form, setForm] = useState({
     title: "",
     description: "",
     link: "",
-    role: "",
-    skills: "",
+    locationPrize: "",
+    domain: "",
   });
   const nav = useNavigate();
 
@@ -22,13 +22,14 @@ export default function AddJob({ onSuccess }: AddLinkFormProps) {
     e.preventDefault();
     try {
       await axios.post(
-        `${backendUrl}/api/v1/public/jobs/link`,
+        `${backendUrl}/api/v1/public/hackathons/link`,
         {
           title: form.title,
           description: form.description,
           link: form.link,
-          role: form.role,
-          skills: form.skills.split(","),
+          location: form.locationPrize.split(",")[0],
+          prizepool: Number(form.locationPrize.split(",")[1]),
+          domain: form.domain,
         },
         {
           headers: {
@@ -37,7 +38,7 @@ export default function AddJob({ onSuccess }: AddLinkFormProps) {
         }
       );
       toast.success("Link added successfully");
-      nav("/public/jobs");
+      nav("/public/hackathons");
       onSuccess?.();
     } catch (error) {
       toast.error("Failed to add link");
@@ -46,38 +47,38 @@ export default function AddJob({ onSuccess }: AddLinkFormProps) {
   return (
     <div className=" mt-10 items-center mx-auto">
       <form onSubmit={handleSubmit} className="flex pt-10 justify-center">
-        <div className="bg-gradient-to-r from-blue-400 to-violet-400 backdrop-blur-sm text-gray-700 border mt-2 p-5 shadow-xl w-[600px] rounded-lg h-fit">
-          <div className=" flex gap-2 w-fit justify-center text-blue-600 p-2 rounded-lg bg-white/30 backdrop-blur-sm border">
-            <Info className="size-5 " /> fill the below form to to announce Job
-            opportunities.
+        <div className="bg-white text-gray-700 border mt-2 p-5 shadow-xl w-[600px] rounded-lg h-fit">
+          <div className=" flex gap-2 w-fit justify-center text-blue-600 p-2 rounded-lg bg-blue-500/20 border">
+            <Info className="size-5 " /> fill the below form to share
+            Hackathons.
           </div>
           <div className="flex justify-between">
             <div className="mt-2">Enter Title</div>
-            <div className="mt-2 mr-40">Skills</div>
+            <div className="mt-2 mr-12">Location , Prizepool</div>
           </div>
           <div className="flex justify-between">
             <input
-              placeholder="SDE 1"
+              placeholder="Algothon"
               required
               value={form.title}
               onChange={(e: any) =>
                 setForm((prev) => ({ ...prev, title: e.target.value }))
               }
               type="text"
-              className=" w-[300px] mt-2 p-2 outline-none placeholder:text-gray-500 bg-white/30 backdrop-blur-sm border pl-2 rounded-xl"
+              className="border-2 w-[300px] mt-2 p-2 outline-none border-gray-400 pl-2 rounded-xl"
             />{" "}
             <input
-              placeholder="React.js,Node.js,Express"
+              placeholder="Remote,$1500"
               required
-              value={form.skills}
+              value={form.locationPrize}
               onChange={(e: any) =>
                 setForm((prev) => ({
                   ...prev,
-                  skills: e.target.value,
+                  locationPrize: e.target.value,
                 }))
               }
               type="text"
-              className="outline-none placeholder:text-gray-500 w-[200px] mt-2 p-2 bg-white/30 backdrop-blur-sm border pl-2 rounded-xl"
+              className="outline-none border-2 w-[200px] mt-2 p-2 border-gray-400 pl-2 rounded-xl"
             />
           </div>
           <div className="flex justify-between">
@@ -89,25 +90,25 @@ export default function AddJob({ onSuccess }: AddLinkFormProps) {
                 onChange={(e: any) =>
                   setForm((prev) => ({ ...prev, description: e.target.value }))
                 }
-                className=" outline-none w-[300px] h-[100px] p-2  bg-white/30 backdrop-blur-sm border rounded-xl"
+                className="border-2 outline-none w-[300px] h-[100px] p-2 border-gray-400 rounded-xl"
                 name="description"
               />
-              <div className="mt-2">Role</div>
+              <div className="mt-2">Domain</div>
               <input
-                value={form.role}
+                value={form.domain}
                 onChange={(e: any) =>
                   setForm((prev) => ({
                     ...prev,
-                    role: e.target.value,
+                    domain: e.target.value,
                   }))
                 }
                 type="text"
-                placeholder="Senior Engineer"
-                className="outline-none placeholder:text-gray-500 w-[300px] mt-2 p-2 bg-white/30 backdrop-blur-sm border pl-2 rounded-xl"
+                placeholder="Algorithms and Dp"
+                className="outline-none border-2 w-[300px] mt-2 p-2 border-gray-400 pl-2 rounded-xl"
               />
             </div>
             <div className="mr-12 mt-10 ">
-              <KanbanSquareIcon className=" text-violet-600 size-36" />
+              <Trophy className=" text-violet-600 size-36" />
             </div>
           </div>
 
@@ -121,7 +122,7 @@ export default function AddJob({ onSuccess }: AddLinkFormProps) {
                 onChange={(e: any) =>
                   setForm((prev) => ({ ...prev, link: e.target.value }))
                 }
-                className=" w-[300px] outline-none mt-2 p-2 bg-white/30 backdrop-blur-sm border pl-2 rounded-xl"
+                className="border-2 w-[300px] outline-none mt-2 p-2 border-gray-400 pl-2 rounded-xl"
               />
             </div>
             <button

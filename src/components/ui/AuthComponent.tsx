@@ -72,7 +72,7 @@ const AuthForm = () => {
   };
   return (
     <div>
-          <ToastContainer />
+      <ToastContainer />
 
       {loading ? (
         <div>
@@ -85,8 +85,12 @@ const AuthForm = () => {
           />
         </div>
       ) : (
-        <div className="w-fit p-4 mx-auto my-20 bg-white rounded-lg shadow">
-          <h2 className="text-2xl font-bold mb-4 text-center">
+        <div
+          className={`w-fit p-10 mx-auto my-20 ${
+            isLogin ? "" : "px-20"
+          } bg-gradient-to-r from-blue-400 to-violet-400  rounded-lg shadow `}
+        >
+          <h2 className="text-2xl font-bold mb-4 text-black/60 text-center">
             {isLogin ? "Login" : "Sign Up"}
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -98,7 +102,7 @@ const AuthForm = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border bg-white/40 backdrop-blur-sm rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
@@ -117,7 +121,7 @@ const AuthForm = () => {
                       fname: e.target.value,
                     })
                   }
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border rounded-md bg-white/40 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
               </div>
@@ -137,7 +141,7 @@ const AuthForm = () => {
                       lname: e.target.value,
                     })
                   }
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full bg-white/40 backdrop-blur-sm px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
               </div>
@@ -152,7 +156,7 @@ const AuthForm = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, password: e.target.value })
                   }
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 bg-white/40 backdrop-blur-sm py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
                 <button
@@ -183,7 +187,7 @@ const AuthForm = () => {
                       confirmPassword: e.target.value,
                     })
                   }
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border bg-white/40 backdrop-blur-sm rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
               </div>
