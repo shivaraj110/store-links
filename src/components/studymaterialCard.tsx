@@ -8,14 +8,16 @@ import { studyLink } from "../types";
 
 const onDelete = (id: number) => {
   axios
-    .delete(backendUrl + "/api/v1/public/scholarships/link", {
+    .delete(backendUrl + "/api/v1/public/studymaterials/link", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
       data: { id },
     })
     .then((res) => {
-      toast.success(res.data.msg);
+      res.status === 200
+        ? toast.success(res.data.msg)
+        : toast.error(res.data.msg);
       window.location.reload();
     });
 };
@@ -23,7 +25,7 @@ const onDelete = (id: number) => {
 export function StudymaterialCard(link: studyLink) {
   const nav = useNavigate();
   return (
-    <div className="rounded-lg border my-4 border-blue-600 bg-gray-700/10 backdrop-blur-sm p-4 shadow-sm">
+    <div className="rounded-lg border my-4 bg-gradient-to-r from-blue-200 to-violet-400 backdrop-blur-sm p-4 shadow-2xl">
       <ToastContainer />
       <div className="flex items-start justify-between">
         <div className="flex-1">
@@ -66,7 +68,7 @@ export function StudymaterialCard(link: studyLink) {
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-600">subjects:</span>
           {link.categories.map((category) => (
-            <span className="text-sm mx-2 font-medium capitalize">
+            <span className="text-sm mx-2 text-gray-700 capitalize">
               {category}
             </span>
           ))}

@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import { backendUrl } from "../config/url";
-import { ScholarshipsLink } from "../types";
+import { hackathonLink } from "../types";
 
 const onDelete = (id: number) => {
   axios
-    .delete(backendUrl + "/api/v1/public/scholarships/link", {
+    .delete(backendUrl + "/api/v1/public/hackathons/link", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
@@ -20,10 +20,10 @@ const onDelete = (id: number) => {
     });
 };
 
-export function ScholarshipCard(link: ScholarshipsLink) {
+export function HackathonCard(link: hackathonLink) {
   const nav = useNavigate();
   return (
-    <div className="rounded-lg border bg-gradient-to-r from-blue-200 to-violet-400 backdrop-blur-sm p-4 shadow-2xl">
+    <div className="rounded-lg border my-4 bg-gradient-to-r from-blue-200 to-violet-400 backdrop-blur-sm p-4 shadow-2xl">
       <ToastContainer />
       <div className="flex items-start justify-between">
         <div className="flex-1">
@@ -45,7 +45,7 @@ export function ScholarshipCard(link: ScholarshipsLink) {
           <button
             onClick={() => {
               nav(
-                `/edit-link?id=${link.id}&title=${link.title}&desc=${link.desc}&link=${link.link}&category=${link.org}&additionalData=${link.title}`
+                `/edit-link?id=${link.id}&title=${link.title}&desc=${link.desc}&link=${link.link}&category=${link.desc}&additionalData=${link.title}`
               );
             }}
             className="text-blue-700 hover:text-blue-900"
@@ -63,9 +63,16 @@ export function ScholarshipCard(link: ScholarshipsLink) {
 
       <div className="mt-2 space-y-2">
         <p className="text-sm text-gray-900">{link.desc}</p>
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-600">Organization:</span>
-          <span className="text-sm font-medium capitalize">{link.org}</span>
+        <div className="flex items-center justify-between gap-2">
+          <div className="space-x-2">
+            <span className="text-sm text-gray-600">
+              location: {link.location}
+            </span>
+            <span className="text-sm text-gray-600">Domain: {link.domain}</span>
+          </div>
+          <span className="text-sm  text-gray-700">
+            Prize: {link.prizepool}
+          </span>
         </div>
       </div>
 
@@ -76,6 +83,7 @@ export function ScholarshipCard(link: ScholarshipsLink) {
         </div>
         <div className="flex items-center space-x-4">
           <span className="text-sm text-gray-600">{link.views} visits</span>
+
           <span>{formatDistanceToNow(new Date(link.postedOn))} ago</span>
         </div>
       </div>

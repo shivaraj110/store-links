@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import LinkCardSkeleton from "../components/LinkSkeleton";
 import { ScholarshipCard } from "../components/ScholarshipLinkCard";
 import { ScholarshipsLink } from "../types";
+import { PlusCircle } from "lucide-react";
 
 export default function Scholarships() {
   const [search, setSearch] = useState("");
@@ -19,8 +20,10 @@ export default function Scholarships() {
     <div className="space-y-4 mt-10">
       <div className="flex items-center justify-between">
         <SearchBar value={search} onChange={setSearch} />
-        <Link to={"/addScholarShip"}>
-          <Button size="sm">Add Link</Button>
+        <Link to={"/addScholarship"}>
+          <Button size="sm" className=" ">
+            <PlusCircle />
+          </Button>
         </Link>
       </div>
       <div className="space-y-3 ">

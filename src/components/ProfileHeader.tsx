@@ -35,7 +35,7 @@ export function ProfileHeader({
   };
 
   return (
-    <div className="flex justify-between items-center bg-gray-700/40 p-10 rounded-lg gap-6">
+    <div className="flex justify-between items-center bg-gradient-to-r from-blue-200 to-violet-400 p-10 border rounded-lg gap-6">
       <div className="relative group">
         <UserCircle2 className="size-24" />
         <Button

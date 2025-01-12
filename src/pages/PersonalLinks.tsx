@@ -7,6 +7,7 @@ import { useLinks } from "../hooks/usePersonalLinks";
 import { Link as Linkk } from "react-router-dom";
 import LinkCardSkeleton from "../components/LinkSkeleton";
 import NoLinksYet from "../components/Nolinks";
+import { PlusCircle } from "lucide-react";
 
 export default function PersonalLinks() {
   const [search, setSearch] = useState("");
@@ -19,14 +20,16 @@ export default function PersonalLinks() {
   );
 
   return (
-    <div className="space-y-4 mt-10">
+    <div className="space-y-4">
       <div className="flex items-center justify-between">
         <Linkk to={"/addPersonalLink"}></Linkk>
       </div>
       <div className="flex items-center justify-between">
         <SearchBar value={search} onChange={setSearch} />
         <Linkk to={"/addPersonalLink"}>
-          <Button size="sm">Add Link</Button>
+          <Button size="sm" className=" ">
+            <PlusCircle />
+          </Button>
         </Linkk>
       </div>
 

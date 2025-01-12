@@ -84,7 +84,7 @@ export default function AddLinkForm({ onSuccess }: AddLinkFormProps) {
               type="button"
               variant="outline"
               onClick={() => {
-                nav("/personal");
+                nav("/");
               }}
             >
               Cancel

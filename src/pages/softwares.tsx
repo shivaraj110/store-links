@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { SearchBar } from "../components/SearchBar";
 import { Button } from "../components/ui/Button";
-import { useStudyMaterialLinks } from "../hooks/usePersonalLinks";
+import { useSoftwareLinks } from "../hooks/usePersonalLinks";
 import { Link } from "react-router-dom";
 import LinkCardSkeleton from "../components/LinkSkeleton";
-import { studyLink } from "../types";
-import { StudymaterialCard } from "../components/studymaterialCard";
+import { softwareLink } from "../types";
+import { SoftwareCard } from "../components/softwareCard";
+import { PlusCircle } from "lucide-react";
 
 export default function Softwares() {
   const [search, setSearch] = useState("");
-  const { loading, links } = useStudyMaterialLinks();
+  const { loading, links } = useSoftwareLinks();
   const filteredLinks = links.filter(
-    (link: studyLink) =>
+    (link: softwareLink) =>
       link.title.toLowerCase().includes(search.toLowerCase()) ||
       link.desc.toLowerCase().includes(search.toLowerCase())
   );
@@ -19,8 +20,10 @@ export default function Softwares() {
     <div className="space-y-4 mt-10">
       <div className="flex items-center justify-between">
         <SearchBar value={search} onChange={setSearch} />
-        <Link to={"/addScholarShip"}>
-          <Button size="sm">Add Link</Button>
+        <Link to={"/addSoftware"}>
+          <Button size="sm" className=" ">
+            <PlusCircle />
+          </Button>{" "}
         </Link>
       </div>
       <div className="space-y-3 ">
@@ -37,13 +40,14 @@ export default function Softwares() {
         ) : (
           <div>
             {filteredLinks.map((link) => (
-              <StudymaterialCard
+              <SoftwareCard
+                version={link.version}
+                category={link.category}
                 id={link.id}
                 title={link.title}
                 desc={link.desc}
                 link={link.link}
                 user={link.user}
-                categories={link.categories}
                 views={link.views}
                 postedOn={link.postedOn}
               />

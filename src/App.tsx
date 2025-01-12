@@ -13,12 +13,16 @@ import Studymaterials from "./pages/studymaterials";
 import Softwares from "./pages/softwares";
 import Jobs from "./pages/jobs";
 import Hackathons from "./pages/hackathons";
+import AddScholarShip from "./pages/addScholarship";
+import AddStudyMaterial from "./pages/addStudymaterials";
+import AddSoftware from "./pages/addSoftware";
+import AddJob from "./pages/addJob";
 
 export default function App() {
   return (
     <Router>
-      <main className="w-[700px] flex items-center justify-center ">
-        <div className="w-[700px] h-[800px] border backdrop-blur-sm rounded-xl p-4">
+      <main className="w-[700px] flex items-center  justify-center ">
+        <div className="w-[700px] h-[800px] border  backdrop-blur-sm rounded-xl p-4">
           <Routes>
             <Route path={"/login"} element={<AuthForm />} />
             <Route path={"/resetpaasword"} element={<ResetPass />} />
@@ -28,6 +32,38 @@ export default function App() {
                 element={
                   <Layout>
                     <PersonalLinks />
+                  </Layout>
+                }
+              />
+              <Route
+                path={"/addSoftware"}
+                element={
+                  <Layout>
+                    <AddSoftware />
+                  </Layout>
+                }
+              />{" "}
+              <Route
+                path={"/addJob"}
+                element={
+                  <Layout>
+                    <AddJob />
+                  </Layout>
+                }
+              />
+              <Route
+                path={"/addScholarship"}
+                element={
+                  <Layout>
+                    <AddScholarShip />
+                  </Layout>
+                }
+              />{" "}
+              <Route
+                path={"/addStudyMaterial"}
+                element={
+                  <Layout>
+                    <AddStudyMaterial />
                   </Layout>
                 }
               />

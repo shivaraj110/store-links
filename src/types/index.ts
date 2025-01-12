@@ -78,7 +78,8 @@ export interface hackathonLink {
   desc: string;
   postedOn: Date;
   domain: String
-  location : String
+  location: String
+  prizepool:number
 }
 
 

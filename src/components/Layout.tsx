@@ -23,7 +23,7 @@ export default function Layout({ children }: { children: ReactNode }) {
               clsx(
                 "text-sm mx-2 hover:text-violet-800 transi delay-75 ",
                 isActive
-                  ? "text-violet-800"
+                  ? "text-violet-800 border py-1 border-b-violet-600"
                   : "text-slate-700 after:bg-transparent hover:after:bg-slate-200"
               )
             }
@@ -41,7 +41,7 @@ export default function Layout({ children }: { children: ReactNode }) {
               clsx(
                 "text-sm mx-2 mt-1  hover:text-violet-800 transi delay-75 ",
                 isActive
-                  ? "text-violet-800"
+                  ? "text-violet-800 border py-1 border-b-violet-600"
                   : "text-slate-700 after:bg-transparent hover:after:bg-slate-200"
               )
             }
@@ -54,7 +54,7 @@ export default function Layout({ children }: { children: ReactNode }) {
               clsx(
                 "text-sm mx-2 mt-1  hover:text-violet-800 transi delay-75 ",
                 isActive
-                  ? "text-violet-800"
+                  ? "text-violet-800 border py-1 border-b-violet-600"
                   : "text-slate-700 after:bg-transparent hover:after:bg-slate-200"
               )
             }
@@ -67,7 +67,7 @@ export default function Layout({ children }: { children: ReactNode }) {
               clsx(
                 "text-sm mx-2 mt-1  hover:text-violet-800 transi delay-75 ",
                 isActive
-                  ? "text-violet-800"
+                  ? "text-violet-800 border py-1 border-b-violet-600"
                   : "text-slate-700 after:bg-transparent hover:after:bg-slate-200"
               )
             }
@@ -80,7 +80,7 @@ export default function Layout({ children }: { children: ReactNode }) {
               clsx(
                 "text-sm mx-2 mt-1  hover:text-violet-800 transi delay-75 ",
                 isActive
-                  ? "text-violet-800"
+                  ? "text-violet-800 border py-1 border-b-violet-600"
                   : "text-slate-700 after:bg-transparent hover:after:bg-slate-200"
               )
             }
@@ -93,7 +93,7 @@ export default function Layout({ children }: { children: ReactNode }) {
               clsx(
                 "text-sm mx-2 mt-1  hover:text-violet-800 transi delay-75 ",
                 isActive
-                  ? "text-violet-800"
+                  ? "text-violet-800 border py-1 border-b-violet-600"
                   : "text-slate-700 after:bg-transparent hover:after:bg-slate-200"
               )
             }
@@ -107,7 +107,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             clsx(
               "text-sm mx-2 mt-1  hover:text-violet-800 transi delay-75 ",
               isActive
-                ? "text-violet-800"
+                ? "text-violet-800 border py-1 border-b-violet-600"
                 : "text-slate-700 after:bg-transparent hover:after:bg-slate-200"
             )
           }

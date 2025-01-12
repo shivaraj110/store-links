@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import LinkCardSkeleton from "../components/LinkSkeleton";
 import { studyLink } from "../types";
 import { StudymaterialCard } from "../components/studymaterialCard";
+import { PlusCircle } from "lucide-react";
+import { ToastContainer } from "react-toastify";
 
 export default function Studymaterials() {
   const [search, setSearch] = useState("");
@@ -19,8 +21,10 @@ export default function Studymaterials() {
     <div className="space-y-4 mt-10">
       <div className="flex items-center justify-between">
         <SearchBar value={search} onChange={setSearch} />
-        <Link to={"/addScholarShip"}>
-          <Button size="sm">Add Link</Button>
+        <Link to={"/addStudyMaterial"}>
+          <Button size="sm" className=" ">
+            <PlusCircle />
+          </Button>{" "}
         </Link>
       </div>
       <div className="space-y-3 ">
@@ -36,6 +40,7 @@ export default function Studymaterials() {
           </div>
         ) : (
           <div>
+            <ToastContainer />
             {filteredLinks.map((link) => (
               <StudymaterialCard
                 id={link.id}

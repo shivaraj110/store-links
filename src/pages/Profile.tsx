@@ -27,7 +27,7 @@ export default function Profile() {
         onAvatarChange={handleAvatarChange}
       />
 
-      <div className="bg-gray-700/30 backdrop-blur-sm rounded-xl shadow-sm border border-slate-300 p-6">
+      <div className="bg-gradient-to-r from-blue-200 to-violet-400 backdrop-blur-sm rounded-xl shadow-sm border border-slate-300 p-6">
         <h3 className="text-lg font-semibold text-slate-900 mb-6">
           Profile Settings
         </h3>

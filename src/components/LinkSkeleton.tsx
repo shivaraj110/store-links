@@ -1,6 +1,6 @@
 export default function LinkCardSkeleton() {
   return (
-    <div className="bg-gray-700/30 rounded-lg shadow p-4 animate-pulse">
+    <div className=" bg-gradient-to-r from-blue-200 to-violet-400 rounded-lg shadow p-4 animate-pulse">
       <div className="flex items-center justify-between mb-2">
         <div className="h-5 bg-gray-700/40 rounded w-1/4"></div>
         <div className="flex gap-2">

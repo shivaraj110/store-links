@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { SearchBar } from "../components/SearchBar";
 import { Button } from "../components/ui/Button";
-import { useStudyMaterialLinks } from "../hooks/usePersonalLinks";
+import { useHackathonLinks } from "../hooks/usePersonalLinks";
 import { Link } from "react-router-dom";
 import LinkCardSkeleton from "../components/LinkSkeleton";
-import { studyLink } from "../types";
-import { StudymaterialCard } from "../components/studymaterialCard";
+import { hackathonLink } from "../types";
+import { HackathonCard } from "../components/HackathonCard";
+import { PlusCircle } from "lucide-react";
 
 export default function Hackathons() {
   const [search, setSearch] = useState("");
-  const { loading, links } = useStudyMaterialLinks();
+  const { loading, links } = useHackathonLinks();
   const filteredLinks = links.filter(
-    (link: studyLink) =>
+    (link: hackathonLink) =>
       link.title.toLowerCase().includes(search.toLowerCase()) ||
       link.desc.toLowerCase().includes(search.toLowerCase())
   );
@@ -20,7 +21,9 @@ export default function Hackathons() {
       <div className="flex items-center justify-between">
         <SearchBar value={search} onChange={setSearch} />
         <Link to={"/addScholarShip"}>
-          <Button size="sm">Add Link</Button>
+          <Button size="sm" className=" ">
+            <PlusCircle />
+          </Button>{" "}
         </Link>
       </div>
       <div className="space-y-3 ">
@@ -37,15 +40,17 @@ export default function Hackathons() {
         ) : (
           <div>
             {filteredLinks.map((link) => (
-              <StudymaterialCard
+              <HackathonCard
+                prizepool={link.prizepool}
                 id={link.id}
                 title={link.title}
                 desc={link.desc}
                 link={link.link}
                 user={link.user}
-                categories={link.categories}
                 views={link.views}
                 postedOn={link.postedOn}
+                domain={link.domain}
+                location={link.location}
               />
             ))}
           </div>
