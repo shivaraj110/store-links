@@ -4,7 +4,6 @@ import { backendUrl } from "../config/url";
 import { toast } from "react-toastify";
 import { Input } from "../components/ui/Input";
 import { Button } from "../components/ui/Button";
-import { Navigation } from "../components/Navigation";
 import { useNavigate } from "react-router-dom";
 
 interface AddLinkFormProps {
@@ -38,7 +37,6 @@ export default function AddLinkForm({ onSuccess }: AddLinkFormProps) {
 
   return (
     <div>
-      <Navigation />
       <div className="bg-gray-700/40 backdrop-blur-sm p-10 my-36 rounded-xl ">
         <form onSubmit={handleSubmit} className="space-y-4 ">
           <div>

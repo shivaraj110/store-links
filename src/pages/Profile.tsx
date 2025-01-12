@@ -6,7 +6,6 @@ import {
 } from "../components/ProfileSettings";
 import ProfileSkeleton from "../components/ProfileSkeleton";
 import { useProfile } from "../hooks/useProfile";
-import { Navigation } from "../components/Navigation";
 
 export default function Profile() {
   const { loading, details } = useProfile();
@@ -22,7 +21,6 @@ export default function Profile() {
   return (
     <div className="space-y-5">
       <ToastContainer />
-      <Navigation />
       <ProfileHeader
         joinedOn={details?.joinedOn ?? ""}
         username={details?.fname + " " + details?.lname}
