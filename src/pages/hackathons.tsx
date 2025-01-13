@@ -14,7 +14,9 @@ export default function Hackathons() {
   const filteredLinks = links.filter(
     (link: hackathonLink) =>
       link.title.toLowerCase().includes(search.toLowerCase()) ||
-      link.desc.toLowerCase().includes(search.toLowerCase())
+      link.desc.toLowerCase().includes(search.toLowerCase()) ||
+      link.domain.toLowerCase().includes(search.toLowerCase()) ||
+      link.location.toLowerCase().includes(search.toLowerCase())
   );
   return (
     <div className="space-y-4 mt-10">

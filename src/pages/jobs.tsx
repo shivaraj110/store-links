@@ -14,7 +14,11 @@ export default function Jobs() {
   const filteredLinks = links.filter(
     (link: JobLink) =>
       link.title.toLowerCase().includes(search.toLowerCase()) ||
-      link.desc.toLowerCase().includes(search.toLowerCase())
+      link.desc.toLowerCase().includes(search.toLowerCase()) ||
+      link.role.toLowerCase().includes(search.toLowerCase()) ||
+      link.skills.some((skill) =>
+        skill.toLowerCase().includes(search.toLowerCase())
+      )
   );
   return (
     <div className="space-y-4 mt-10">

@@ -46,7 +46,7 @@ export default function AddJob({ onSuccess }: AddLinkFormProps) {
   return (
     <div className=" mt-10 items-center mx-auto">
       <form onSubmit={handleSubmit} className="flex pt-10 justify-center">
-        <div className="bg-gradient-to-r from-blue-400 to-violet-400 backdrop-blur-sm text-gray-700 border mt-2 p-5 shadow-xl w-[600px] rounded-lg h-fit">
+        <div className="bg-gradient-to-br from-blue-400 to-violet-400 backdrop-blur-sm text-gray-700 border mt-2 p-5 shadow-xl w-[600px] rounded-lg h-fit">
           <div className=" flex gap-2 w-fit justify-center text-blue-600 p-2 rounded-lg bg-white/30 backdrop-blur-sm border">
             <Info className="size-5 " /> fill the below form to to announce Job
             opportunities.

@@ -20,17 +20,39 @@ const onDelete = (id: number) => {
     });
 };
 
+const onVisit = (id: number) => {
+  axios
+    .put(
+      backendUrl + "/api/v1/public/scholarships/view",
+      {
+        id,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      }
+    )
+    .then((res) => {
+      toast.success(res.data.msg);
+      window.location.reload();
+    });
+};
+
 export function ScholarshipCard(link: ScholarshipsLink) {
   const nav = useNavigate();
   return (
-    <div className="rounded-lg border bg-gradient-to-r from-blue-200 to-violet-400 backdrop-blur-sm p-4 shadow-2xl">
-      <div className="bg-gradient-to-l from-white/25 via-white/65 to-white/25 backdrop-blur-lg rounded-lg border p-5">
+    <div className="rounded-lg border bg-gradient-to-r from-blue-300 to-violet-400 backdrop-blur-sm p-2 hover:shadow-2xl cursor-pointer hover:-translate-y-1 transi shadow-xl">
+      <div className="bg-gradient-to-l from-white/25 via-white/65 to-white/25 backdrop-blur-lg shadow-lg rounded-lg border p-3">
         <ToastContainer />
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <h3 className="font-medium text-gray-900">{link.title}</h3>
             <div className="flex items-center gap-4">
               <a
+                onClick={() => {
+                  onVisit(link.id);
+                }}
                 href={link.link}
                 target="_blank"
                 rel="noopener noreferrer"

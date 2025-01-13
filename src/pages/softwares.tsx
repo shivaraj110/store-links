@@ -14,7 +14,8 @@ export default function Softwares() {
   const filteredLinks = links.filter(
     (link: softwareLink) =>
       link.title.toLowerCase().includes(search.toLowerCase()) ||
-      link.desc.toLowerCase().includes(search.toLowerCase())
+      link.desc.toLowerCase().includes(search.toLowerCase()) ||
+      link.category.toLowerCase().includes(search.toLowerCase())
   );
   return (
     <div className="space-y-4 mt-10">

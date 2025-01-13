@@ -15,7 +15,10 @@ export default function Studymaterials() {
   const filteredLinks = links.filter(
     (link: studyLink) =>
       link.title.toLowerCase().includes(search.toLowerCase()) ||
-      link.desc.toLowerCase().includes(search.toLowerCase())
+      link.desc.toLowerCase().includes(search.toLowerCase()) ||
+      link.categories.some((subject) =>
+        subject.toLowerCase().includes(search.toLowerCase())
+      )
   );
   return (
     <div className="space-y-4 mt-10">

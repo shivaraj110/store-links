@@ -19,7 +19,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="space-y-5 bg-gradient-to-r mt-10 from-blue-200 to-violet-400 backdrop-blur-sm rounded-xl p-5">
+    <div className=" space-y-2 bg-gradient-to-r mt-10 from-blue-200 to-violet-400 backdrop-blur-sm rounded-xl p-2">
       <ToastContainer />
       <ProfileHeader
         joinedOn={details?.joinedOn ?? ""}
@@ -27,7 +27,7 @@ export default function Profile() {
         onAvatarChange={handleAvatarChange}
       />
 
-      <div className=" rounded-xl shadow-sm border bg-gradient-to-r from-white/30 via-white/65 to-white/30 backdrop-blur-md border-slate-300 p-5">
+      <div className=" rounded-xl border bg-gradient-to-r shadow-xl from-white/30 via-white/65 to-white/30 backdrop-blur-md border-slate-300 p-5">
         <h3 className="text-lg font-semibold text-gray-600 mb-6">
           Profile Settings
         </h3>
