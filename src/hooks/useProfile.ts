@@ -3,9 +3,10 @@ import { useEffect, useState } from "react"
 import { backendUrl } from "../config/url";
 interface userDetails{
     fname:string,
-lname :string,
+    lname :string,
     email: string,
-    joinedOn:string
+    joinedOn: string,
+    id:number
 }
 
 export const useProfile = () => {

@@ -17,7 +17,8 @@ export interface ScholarshipsLink {
   id: number;
   link: string;
   user: {
-    fname : string
+    fname: string,
+    id:number
   }
   title: string;
   org:string;
@@ -30,6 +31,7 @@ export interface JobLink {
   id: number;
   user: {
     fname : string
+    id:number
   }
   link: string;
   title: string;
@@ -44,6 +46,7 @@ export interface softwareLink {
   id: number;
   user: {
     fname : string
+    id:number
   }
   link: string;
   title: string;
@@ -58,6 +61,7 @@ export interface studyLink {
   id: number;
   user: {
     fname : string
+    id:number
   }
   link: string;
   title: string;
@@ -71,6 +75,7 @@ export interface hackathonLink {
   id: number;
   user: {
     fname : string
+    id:number
   }
   link: string;
   title: string;

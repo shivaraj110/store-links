@@ -1,10 +1,10 @@
 import { formatDistanceToNow } from "date-fns";
 import { Link as LinkIcon, User } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import { backendUrl } from "../config/url";
 import { ScholarshipsLink } from "../types";
+import { useProfile } from "../hooks/useProfile";
 
 const onDelete = (id: number) => {
   axios
@@ -40,10 +40,10 @@ const onVisit = (id: number) => {
 };
 
 export function ScholarshipCard(link: ScholarshipsLink) {
-  const nav = useNavigate();
+  const { details } = useProfile();
   return (
-    <div className="rounded-lg border bg-gradient-to-r from-blue-300 to-violet-400 backdrop-blur-sm p-2 hover:shadow-2xl cursor-pointer hover:-translate-y-1 transi shadow-xl">
-      <div className="bg-gradient-to-l from-white/25 via-white/65 to-white/25 backdrop-blur-lg shadow-lg rounded-lg border p-3">
+    <div className="rounded-lg border bg-gradient-to-r my-3 from-blue-300 to-violet-400 backdrop-blur-sm p-2 hover:shadow-2xl cursor-pointer hover:-translate-y-1 transi shadow-xl">
+      <div className="bg-gradient-to-tr from-white/25 via-white/65 to-white/25 backdrop-blur-lg shadow-lg rounded-lg border p-3">
         <ToastContainer />
         <div className="flex items-start justify-between">
           <div className="flex-1">
@@ -66,8 +66,9 @@ export function ScholarshipCard(link: ScholarshipsLink) {
 
           <div className="flex space-x-2">
             <button
+              disabled={link.user.id !== details?.id}
               onClick={() => onDelete(link.id)}
-              className="text-red-700 hover:text-red-900"
+              className="text-red-700 hover:text-red-900 disabled:hover:cursor-not-allowed"
             >
               Delete
             </button>

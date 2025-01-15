@@ -76,23 +76,24 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
               value={digit}
               onChange={(e) => handleChange(e.target, index)}
               onKeyDown={(e) => handleKeyDown(e, index)}
-              className="w-12 h-12 text-center text-xl border bg-white/30 backdrop-blur-sm rounded focus:outline-none focus:border-blue-500"
+              className="w-12 h-12 text-center text-xl border bg-white/30 backdrop-blur-lg shadow-xl rounded focus:outline-none focus:border-blue-500"
             />
           ))}
         </div>
 
-        <button
-          onClick={handleVerify}
-          className="w-full bg-blue-600 text-white rounded p-2 hover:bg-blue-700 mb-4"
-          disabled={otp.some((digit) => !digit)}
-        >
-          Verify OTP
-        </button>
-
+        <div className="items-center mt-10  bg-gradient-to-tr text-lg from-blue-600 text-gray-800 transi to-violet-700 shadow-xl hover:shadow-2xl rounded-xl border">
+          <button
+            onClick={handleVerify}
+            type="submit"
+            className="flex justify-center w-full p-1 border backdrop-blur-lg rounded-xl bg-gradient-to-tr text-black/60 from-white/35 via-white/60 to-white/35"
+          >
+            Verify OTP
+          </button>
+        </div>
         <button
           onClick={handleResend}
-          disabled={timer > 0}
-          className="w-full text-blue-600 p-2 text-sm"
+          className="w-full text-blue-600 p-2 text-sm cursor-pointer"
+          disabled={otp.some((digit) => !digit)}
         >
           {timer > 0 ? `Resend OTP in ${timer}s` : "Resend OTP"}
         </button>

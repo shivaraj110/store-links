@@ -102,7 +102,7 @@ const AuthForm = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="w-full px-3 py-2 border bg-white/40 backdrop-blur-sm rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border bg-white/40 backdrop-blur-lg shadow-xl rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
@@ -121,7 +121,7 @@ const AuthForm = () => {
                       fname: e.target.value,
                     })
                   }
-                  className="w-full px-3 py-2 border rounded-md bg-white/40 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border rounded-md bg-white/40 backdrop-blur-lg shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
               </div>
@@ -141,7 +141,7 @@ const AuthForm = () => {
                       lname: e.target.value,
                     })
                   }
-                  className="w-full bg-white/40 backdrop-blur-sm px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full bg-white/40 backdrop-blur-lg shadow-xl px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
               </div>
@@ -156,7 +156,7 @@ const AuthForm = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, password: e.target.value })
                   }
-                  className="w-full px-3 bg-white/40 backdrop-blur-sm py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 bg-white/40 backdrop-blur-lg shadow-xl py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
                 <button
@@ -187,7 +187,7 @@ const AuthForm = () => {
                       confirmPassword: e.target.value,
                     })
                   }
-                  className="w-full px-3 py-2 border bg-white/40 backdrop-blur-sm rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border bg-white/40 backdrop-blur-lg shadow-xl rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
               </div>

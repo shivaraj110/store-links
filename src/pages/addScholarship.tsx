@@ -97,7 +97,7 @@ export default function AddScholarShip({ onSuccess }: AddLinkFormProps) {
                 className="bg-white/40 border backdrop-blur-sm w-[300px] outline-none mt-2 p-2 pl-2 rounded-xl"
               />
             </div>
-            <div className="ml-14 items-center mt-10  bg-gradient-to-tr w-full text-lg from-blue-600 text-gray-800 hover:-translate-y-1 transi to-violet-700 shadow-lg hover:shadow-xl rounded-xl border">
+            <div className="ml-14 items-center mt-10  bg-gradient-to-tr w-full text-lg from-blue-600 text-gray-800 hover:-translate-y-1 transi to-violet-700 shadow-xl hover:shadow-2xl rounded-xl border">
               <button
                 type="submit"
                 className="flex justify-center w-full p-1 border backdrop-blur-lg rounded-xl bg-gradient-to-tr text-black/65 from-white/35 via-white/60 to-white/35"
