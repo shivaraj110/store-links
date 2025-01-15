@@ -45,7 +45,7 @@ export function StudymaterialCard(link: studyLink) {
   const nav = useNavigate();
   return (
     <div className="rounded-lg border my-4 bg-gradient-to-r from-blue-300 to-violet-400 backdrop-blur-sm p-2 hover:shadow-2xl cursor-pointer hover:-translate-y-1 transi shadow-xl">
-      <div className="bg-gradient-to-l from-white/25 via-white/65 to-white/25 shadow-lg backdrop-blur-lg rounded-lg border p-3">
+      <div className="bg-gradient-to-tr from-white/25 via-white/65 to-white/25 shadow-lg backdrop-blur-lg rounded-lg border p-3">
         <ToastContainer />
         <div className="flex items-start justify-between">
           <div className="flex-1">
@@ -67,16 +67,6 @@ export function StudymaterialCard(link: studyLink) {
           </div>
 
           <div className="flex space-x-2">
-            <button
-              onClick={() => {
-                nav(
-                  `/edit-link?id=${link.id}&title=${link.title}&desc=${link.desc}&link=${link.link}&category=${link.desc}&additionalData=${link.title}`
-                );
-              }}
-              className="text-blue-700 hover:text-blue-900"
-            >
-              Edit
-            </button>
             <button
               onClick={() => onDelete(link.id)}
               className="text-red-700 hover:text-red-900"

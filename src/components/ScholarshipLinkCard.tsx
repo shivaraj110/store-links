@@ -66,16 +66,6 @@ export function ScholarshipCard(link: ScholarshipsLink) {
 
           <div className="flex space-x-2">
             <button
-              onClick={() => {
-                nav(
-                  `/edit-link?id=${link.id}&title=${link.title}&desc=${link.desc}&link=${link.link}&category=${link.org}&additionalData=${link.title}`
-                );
-              }}
-              className="text-blue-700 hover:text-blue-900"
-            >
-              Edit
-            </button>
-            <button
               onClick={() => onDelete(link.id)}
               className="text-red-700 hover:text-red-900"
             >

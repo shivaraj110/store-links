@@ -31,8 +31,8 @@ export function LinkCard({ link }: LinkCardProps) {
   const nav = useNavigate();
   const { details } = useProfile();
   return (
-    <div className="rounded-lg border  bg-gradient-to-r from-blue-200 to-violet-400 backdrop-blur-sm p-4 shadow-2xl">
-      <div className="bg-gradient-to-l from-white/25 via-white/65 to-white/25 backdrop-blur-lg rounded-lg border p-5">
+    <div className="rounded-lg border  bg-gradient-to-r from-blue-200 to-violet-400 backdrop-blur-sm p-2 shadow-2xl">
+      <div className="bg-gradient-to-tr from-white/25 via-white/65 to-white/25 backdrop-blur-lg rounded-lg border p-3">
         <ToastContainer />
 
         <div className="flex items-start justify-between">

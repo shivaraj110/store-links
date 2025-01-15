@@ -125,12 +125,14 @@ export default function AddHackathon({ onSuccess }: AddLinkFormProps) {
                 className="border-2 w-[300px] outline-none mt-2 p-2 border-gray-400 pl-2 rounded-xl"
               />
             </div>
-            <button
-              type="submit"
-              className=" ml-14 mt-8 bg-gradient-to-tr w-full mx-5 text-lg from-blue-400 text-gray-800 to-violet-400 p-2 px-4 rounded-xl border"
-            >
-              Submit
-            </button>
+            <div className="ml-14 items-center mt-10  bg-gradient-to-tr w-full text-lg from-blue-600 text-gray-800 hover:-translate-y-1 transi to-violet-700 shadow-lg hover:shadow-xl rounded-xl border">
+              <button
+                type="submit"
+                className="flex justify-center w-full p-1 border backdrop-blur-lg rounded-xl bg-gradient-to-tr text-black/65 from-white/35 via-white/60 to-white/35"
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </form>

@@ -40,7 +40,7 @@ export default function Hackathons() {
             <LinkCardSkeleton />
           </div>
         ) : (
-          <div>
+          <div className="">
             {filteredLinks.map((link) => (
               <HackathonCard
                 prizepool={link.prizepool}

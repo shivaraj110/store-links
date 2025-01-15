@@ -23,7 +23,7 @@ export default function App() {
   return (
     <Router>
       <main className="w-[700px] flex items-center  justify-center ">
-        <div className="w-[700px] h-[800px] border  backdrop-blur-sm rounded-xl p-4">
+        <div className="w-[700px] h-[800px] border overflow-y-scroll mb-2 backdrop-blur-sm rounded-xl p-4">
           <Routes>
             <Route path={"/login"} element={<AuthForm />} />
             <Route path={"/resetpaasword"} element={<ResetPass />} />
